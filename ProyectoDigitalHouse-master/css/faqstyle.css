@@ -10,14 +10,13 @@ body {
 
 @font-face {
   font-family: "Lobster";
-  src: url("../../fonts/Lobster-Regular.woff");
+  src: url("fonts/Lobster-Regular.woff");
 }
 
 /*NAV*/
 
 .nombre {
   font-family: "Lobster";
-  margin-top: -2px;
   font-size: 2rem;
   float: left;
   color: orange;
@@ -29,12 +28,45 @@ body {
   width: 95%;
   margin: 0 auto;
 }
-.ladoder {
-  overflow: hidden;
+
+input#act {
+  position: relative;
+  right: 20px;
   float: right;
-  margin-top: 16px;
+  margin-top: 15px;
+  margin-right: -12px;
+  z-index: -1;
+
 }
-.pie li , .menu {
+img.hamburguesa {
+  width: 30px;
+  float: right;
+  margin-top: 11px;
+  z-index: 5;
+}
+ul.hambur {
+    margin-top: 55px;
+    overflow: hidden;
+}
+ul li.menu {
+  text-align: center;
+  list-style: none;
+  margin-top: -5px;
+  border-top: 1px solid grey;
+  padding: 14px;
+}
+
+
+#act ~ ul li.menu  {
+  display: none;
+  overflow: hidden;
+}
+
+#act:checked ~ ul li.menu {
+  display: block;
+}
+
+.pie li  {
   list-style: none;
   float: left;
   margin-top: 8px;
@@ -61,10 +93,12 @@ a {
 .menu-principal {
   overflow: hidden;
   width: 100%;
-  height: 45px;
   background-color: rgb(24, 22, 23);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+nav {
   position: fixed;
-  margin-bottom: 10px;
 }
 
 
@@ -82,7 +116,7 @@ article {
   background-color:rgb(250, 246, 235);
 }
 
-h1 {
+h3 {
   font-size: 1.5rem;
 }
 
@@ -91,6 +125,7 @@ h2 {
   padding: 15px 15px 15px 3px;
   background-color: white;
   font-weight: lighter;
+  border: 1px solid #80808036;
 }
 
 p {
@@ -102,9 +137,8 @@ p {
 .novisto {
   width: 20px;
   float: right;
-  position: relative;
-  bottom: 37px;
-  right: 13px;
+  margin-top: -39px;
+  margin-right: 11px;
 }
 #activar, #activar2, #activar3, #activar4, #activar5 {
   z-index: -2;
@@ -119,6 +153,7 @@ p {
 
 #activar:checked ~ .desplegable {
   display: block;
+  margin-top: 20px;
 }
 
 #activar:checked ~ .inputlabel img.novisto {
@@ -132,6 +167,7 @@ p {
 
 #activar2:checked ~ .desplegable {
   display: block;
+  margin-top: 20px;
 }
 
 #activar2:checked ~ .inputlabel img.novisto {
@@ -145,6 +181,7 @@ p {
 
 #activar3:checked ~ .desplegable {
   display: block;
+  margin-top: 20px;
 }
 
 #activar3:checked ~ .inputlabel img.novisto {
@@ -158,6 +195,7 @@ p {
 
 #activar4:checked ~ .desplegable {
   display: block;
+  margin-top: 20px;
 }
 
 #activar4:checked ~ .inputlabel img.novisto {
@@ -167,10 +205,12 @@ p {
 #activar5 ~ .desplegable  {
   display: none;
   overflow: hidden;
+
 }
 
 #activar5:checked ~ .desplegable {
   display: block;
+  margin-top: 20px;
 }
 
 #activar5:checked ~ .inputlabel img.novisto {
@@ -215,60 +255,20 @@ h3 {
   color: white;
   margin: 30px 0;
 }
-
-@media (min-width: 425px) {
-  h1 {
-    font-size: 3rem;
+@media (min-width: 523px) {
+  section {
+   height: 190.5vh;
   }
-
-  .fav {
-    height: 216px;
-  }
-}
-
-@media (min-width: 628px) {
-
-.fav {
-  height: 318px;
-}
 }
 
 @media (min-width: 768px) {
 
-.menu-contenedor, .header-contenedor, .todainfo, ul.pie {
+ ul.pie, .menu-contenedor {
   width: 90%;
-}
-h2, h1 {
-  text-align: left;
-}
-h1 {
-  font-size: 3.4rem;
-  margin-top: 124px;
-}
-.explicacion {
-  float: left;
-  width: 33%;
-  border-top: none;
-}
-
-.seccion1 {
-  height: 247px;
-  padding-top: 28px;
 }
 
 p {
   font-size: 1rem;
-}
-
-.destacados {
-height: 651px;
-width: 90%;
-}
-
-.fav {
-  width: 49%;
-  height: 192px;
-  display: inline-block;
 }
 
 ul.pie {
@@ -285,8 +285,43 @@ footer {
   height: 207px;
 }
 
-}
+
 @media (min-width: 1024px){
+  section {
+    height: 146.5vh;
+}
+
+  .hamburguesa, input[type=checkbox] {
+    display: none;
+  }
+  #act ~ ul li.menu {
+      display: inline-block;
+      overflow: hidden;
+      margin-top: 10px;
+      float: right;
+      border-top: none;
+      padding: 14px;
+    }
+  a.iniciar, ul li.menu {
+    font-size: 1rem;
+  }
+
+  ul.hambur {
+      margin-top: 0;
+  }
+
+  ul li.menu:hover {
+    border-bottom: 4px solid orange;
+  }
+.com {
+  overflow: hidden;
+  width: 55%;
+  margin: auto;
+
+}
+  .menu-contenedor {
+      width: 850px;
+  }
   a.iniciar, ul li.menu {
     font-size: 1rem;
   }
@@ -295,32 +330,16 @@ footer {
     margin-top: 17px;
   }
 
-  header {
-    height: 692px;
+  ul li.menu:hover {
+    border-bottom: 4px solid orange;
   }
 
-  .menu-contenedor, .header-contenedor, .todainfo, ul.pie, .seccion2 {
+ ul.pie, article, .menu-contenedor{
     width: 850px;
   }
-
-  .seccion2 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  li.faq {
+    padding-top: 20px;
   }
-
   ul.pie li {
     margin-left: 91px;
-}
-
-.fav {
-  height: 211px;
-}
-
-.busca {
-  margin-top: 66px;
-}
-
-.descatados {
-  margi: 0;
 }

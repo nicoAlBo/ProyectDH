@@ -6,11 +6,11 @@
 
 @font-face {
   font-family: "Roboto";
-  src: url("css/fonts/Roboto-Regular.woff");
+  src: url("fonts/Roboto-Regular.woff");
 
 }@font-face {
   font-family: "Lobster";
-  src: url("css/fonts/Lobster-Regular.woff");
+  src: url("fonts/Lobster-Regular.woff");
 }
 /* MENU BARRA DE NAVEGACION */
 body {
@@ -34,15 +34,48 @@ body {
   overflow: hidden;
   float: right;
   margin-top: 16px;
-}
-li {
-  list-style: none;
-  float: left;
-  margin-top: 8px;
-}
-ul li.menu {
   display: none;
 }
+.hamb {
+  overflow: hidden;
+
+}
+input[type=checkbox] {
+  position: relative;
+  right: 20px;
+  float: right;
+  margin-top: 15px;
+  margin-right: -12px;
+  z-index: -1;
+
+}
+img.hamburguesa {
+  width: 30px;
+  float: right;
+  margin-top: 11px;
+  z-index: 5;
+}
+ul.hambur {
+    margin-top: 55px;
+}
+ul li.menu {
+  text-align: center;
+  list-style: none;
+  margin-top: -5px;
+  border-top: 1px solid grey;
+  padding: 14px;
+}
+
+
+#act ~ ul li.menu  {
+  display: none;
+  overflow: hidden;
+}
+
+#act:checked ~ ul li.menu {
+  display: block;
+}
+
 .menu {
   padding: 0 7px;
 }
@@ -50,6 +83,20 @@ a.iniciar {
   padding: 0 10px;
   font-size: 0.9rem;
   color: white;
+}
+
+.iniciar.head {
+  width: 127px;
+  float: left;
+  margin-top: 33px;
+  margin-left: 17px;
+  text-align: center;
+  border: 4px solid black;
+  border-radius: 50px;
+  padding: 10px;
+  background-color: orange;
+  font-weight: bolder;
+  color: black;
 }
 a {
   text-decoration: none;
@@ -60,8 +107,8 @@ a {
 .menu-principal {
   overflow: hidden;
   width: 100%;
-  height: 45px;
   background-color: rgb(24, 22, 23);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 nav {
   position: fixed;
@@ -77,7 +124,7 @@ header {
   overflow: hidden;
   width: 100%;
   height: 500px;
-  background-image: url("https://i.pinimg.com/originals/af/7e/58/af7e585345e6d881bef7b42df7b44c47.jpg");
+  background-image: url("https://cdn.pixabay.com/photo/2015/07/28/21/01/create-865017_960_720.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -85,23 +132,24 @@ header {
 
 h1 {
   font-family: "Roboto";
-  color: orange;
-  font-weight: bolder;
-  font-size: 2.5rem;
-  margin-top: 107px;
+      color: white;
+      font-weight: bolder;
+      font-size: 2.3rem;
+      margin-top: 67px;
 }
 
 h2 {
   font-family: "Roboto";
-  color: white;
-  font-size: 1.4rem;
-  font-weight: lighter;
-  margin-top: 50px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: lighter;
+      margin-top: 43px;
 }
 
 h1, h2 {
   margin-left: 15px;
   margin-right: 15px;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 /* SECTION 1 */
@@ -208,7 +256,7 @@ footer img {
   font-size: 0.8rem;
   text-align: center;
   float: none;
-  padding: 3px;
+  padding: 7px;
 }
 
 h3 {
@@ -223,7 +271,7 @@ h3 {
 
 @media (min-width: 425px) {
   h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 
   .fav {
@@ -292,14 +340,38 @@ footer {
 
 }
 @media (min-width: 1024px){
+  .hamburguesa, input[type=checkbox] {
+    display: none;
+  }
+  #act ~ ul li.menu {
+      display: inline-block;
+      overflow: hidden;
+    }
   a.iniciar, ul li.menu {
     font-size: 1rem;
   }
   ul li.menu {
-    display: inherit;
-    margin-top: 17px;
+    float: right;
+    margin-top: -5px;
+    border-top: none;
+    margin-top: -45px;
+    padding: 14px;
   }
 
+  ul li.menu:hover {
+    border-bottom: 4px solid orange;
+  }
+.com {
+  overflow: hidden;
+  width: 55%;
+  margin: auto;
+
+}
+.iniciar.head {
+  width: 169px;
+  margin-top: 62px;
+  margin-left: 29px;
+}
   header {
     height: 692px;
   }
@@ -327,5 +399,5 @@ footer {
 }
 
 .descatados {
-  margi: 0;
+  margin: 0;
 }
