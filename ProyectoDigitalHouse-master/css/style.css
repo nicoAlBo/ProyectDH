@@ -1,0 +1,329 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("css/fonts/Roboto-Regular.woff");
+
+}@font-face {
+  font-family: "Lobster";
+  src: url("css/fonts/Lobster-Regular.woff");
+}
+/* MENU BARRA DE NAVEGACION */
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+.nombre {
+  font-family: "Lobster";
+  margin-top: -2px;
+  font-size: 2rem;
+  float: left;
+  color: orange;
+  font-weight: bolder;
+}
+.menu-contenedor {
+  overflow: hidden;
+  width: 95%;
+  margin: 0 auto;
+}
+.ladoder {
+  overflow: hidden;
+  float: right;
+  margin-top: 16px;
+}
+li {
+  list-style: none;
+  float: left;
+  margin-top: 8px;
+}
+ul li.menu {
+  display: none;
+}
+.menu {
+  padding: 0 7px;
+}
+a.iniciar {
+  padding: 0 10px;
+  font-size: 0.9rem;
+  color: white;
+}
+a {
+  text-decoration: none;
+  padding: 5px;
+  color: white;
+}
+
+.menu-principal {
+  overflow: hidden;
+  width: 100%;
+  height: 45px;
+  background-color: rgb(24, 22, 23);
+}
+nav {
+  position: fixed;
+}
+/* HEADER */
+.header-contenedor {
+  width: 95%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+header {
+  overflow: hidden;
+  width: 100%;
+  height: 520px;
+  background-image: url("css/imagenes/chicaroja.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+h1 {
+  font-family: "Roboto";
+  color: white;
+  font-weight: bolder;
+  font-size: 2.5rem;
+  margin-top: 107px;
+}
+
+h2 {
+  color: black;
+  font-size: 1.4rem;
+  font-weight: lighter;
+  margin-top: 50px;
+}
+
+h1, h2 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* SECTION 1 */
+.todainfo {
+  overflow: hidden;
+  width: 95%;
+  margin: 0 auto;
+}
+.seccion1 {
+  width: 100%;
+  height: 574px;
+  overflow: hidden;
+  background-color: rgb(251, 251, 237);
+}
+
+.explicacion {
+  width: 80%;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 35px;
+  border-top: 1px dotted black;
+}
+.descripcion {
+  width: 54px;
+  display: block;
+  margin: 20px auto 20px auto;
+}
+
+p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* SECCION 2 */
+
+.destacados {
+  background-color: white;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.fav {
+  margin: 0 auto;
+  width: 90%;
+  height: 162px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.imagenes {
+  width: 100%;
+}
+
+.fav a {
+  padding: 0;
+}
+
+.explorar {
+ width: 70%;
+ overflow: hidden;
+ margin: 0 auto;
+
+}
+.busca {
+  margin-top: 25px;
+  width: 100%;
+  padding: 5px;
+  border: 2px solid rgb(251, 180, 79);
+  padding-right: 23px;
+}
+
+.lupa {
+  width: 30px;
+  z-index: 5;
+  float: right;
+  position: relative;
+  bottom: 30px;
+  margin-right: 5px;
+}
+
+/* FOOTER */
+
+footer{
+  overflow: hidden;
+  width: 100%;
+  height: 300px;
+  background-color: black;
+}
+.redes {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 147px;
+  margin-bottom: 40px;
+}
+footer img {
+  overflow: hidden;
+  width: 35px;
+  background-color: white;
+  border-radius: 19px;
+
+}
+
+.pie li  {
+  font-size: 0.8rem;
+  text-align: center;
+  float: none;
+  padding: 3px;
+}
+
+h3 {
+  text-align: center;
+  margin: 30px 0 40px 0;
+}
+
+#nredes {
+  color: white;
+  margin: 30px 0;
+}
+
+@media (min-width: 425px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  .fav {
+    height: 216px;
+  }
+}
+
+@media (min-width: 628px) {
+
+.fav {
+  height: 318px;
+}
+}
+
+@media (min-width: 768px) {
+
+.menu-contenedor, .header-contenedor, .todainfo, ul.pie {
+  width: 90%;
+}
+h2, h1 {
+  text-align: left;
+}
+h1 {
+  font-size: 3.4rem;
+  margin-top: 124px;
+}
+.explicacion {
+  float: left;
+  width: 33%;
+  border-top: none;
+}
+
+.seccion1 {
+  height: 247px;
+  padding-top: 28px;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.destacados {
+height: 651px;
+width: 90%;
+}
+
+.fav {
+  width: 49%;
+  height: 192px;
+  display: inline-block;
+}
+
+ul.pie {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+ul.pie li {
+  display: inline-block;
+  margin-left: 60px;
+}
+
+footer {
+  height: 207px;
+}
+
+}
+@media (min-width: 1024px){
+  a.iniciar, ul li.menu {
+    font-size: 1rem;
+  }
+  ul li.menu {
+    display: inherit;
+    margin-top: 17px;
+  }
+
+  header {
+    height: 692px;
+  }
+
+  .menu-contenedor, .header-contenedor, .todainfo, ul.pie, .seccion2 {
+    width: 850px;
+  }
+
+  .seccion2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  ul.pie li {
+    margin-left: 91px;
+}
+
+.fav {
+  height: 211px;
+}
+
+.busca {
+  margin-top: 66px;
+}
+
+.descatados {
+  margi: 0;
+}
