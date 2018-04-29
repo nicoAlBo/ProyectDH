@@ -1,0 +1,252 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@font-face {
+  font-family: "Lobster";
+  src: url("../../fonts/Lobster-Regular.woff");
+}
+
+/*NAV*/
+
+.nombre {
+  font-family: "Lobster";
+  margin-top: -2px;
+  font-size: 2rem;
+  float: left;
+  color: orange;
+  font-weight: bolder;
+}
+
+.menu-contenedor {
+  overflow: hidden;
+  width: 95%;
+  margin: 0 auto;
+}
+.ladoder {
+  overflow: hidden;
+  float: right;
+  margin-top: 16px;
+}
+.pie li , .menu {
+  list-style: none;
+  float: left;
+  margin-top: 8px;
+}
+
+ul li.menu {
+  display: none;
+}
+
+.menu {
+  padding: 0 7px;
+}
+a.iniciar {
+  padding: 0 10px;
+  font-size: 0.9rem;
+  color: white;
+}
+a {
+  text-decoration: none;
+  padding: 5px;
+  color: white;
+}
+
+.menu-principal {
+  overflow: hidden;
+  width: 100%;
+  height: 45px;
+  background-color: rgb(24, 22, 23);
+  position: fixed;
+  margin-bottom: 10px;
+}
+
+
+/* Section*/
+section {
+  overflow:hidden;
+  width: 100%;
+  background-color: rgb(251, 251, 237);
+}
+
+article {
+  overflow: hidden;
+  width: 90%;
+  margin: 100px auto;
+  background-color:rgb(250, 246, 235);
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  padding: 15px 15px 15px 3px;
+  background-color: white;
+  font-weight: lighter;
+}
+
+p {
+  text-align: justify;
+  clear: both;
+
+}
+
+.novisto {
+  width: 20px;
+  float: right;
+  position: relative;
+  bottom: 37px;
+  right: 13px;
+}
+#activar, #activar2, #activar3, #activar4 {
+  z-index: -2;
+  position: relative;
+  top: 42px;
+}
+
+#activar ~ .desplegable  {
+  display: none;
+  overflow: hidden;
+}
+
+#activar:checked ~ .desplegable {
+  display: block;
+}
+
+#activar:checked ~ .inputlabel img.novisto {
+  transform: rotate(-90deg);
+}
+
+#activar2 ~ .desplegable  {
+  display: none;
+  overflow: hidden;
+}
+
+#activar2:checked ~ .desplegable {
+  display: block;
+}
+
+#activar2:checked ~ .inputlabel img.novisto {
+  transform: rotate(-90deg);
+}
+
+#activar3 ~ .desplegable  {
+  display: none;
+  overflow: hidden;
+}
+
+#activar3:checked ~ .desplegable {
+  display: block;
+}
+
+#activar3:checked ~ .inputlabel img.novisto {
+  transform: rotate(-90deg);
+}
+
+#activar4 ~ .desplegable  {
+  display: none;
+  overflow: hidden;
+}
+
+#activar4:checked ~ .desplegable {
+  display: block;
+}
+
+#activar4:checked ~ .inputlabel img.novisto {
+  transform: rotate(-90deg);
+}
+/*footer*/
+
+footer {
+  overflow: hidden;
+  width: 100%;
+  height: 300px;
+  background-color: black;
+}
+.redes {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 147px;
+  margin-bottom: 40px;
+}
+footer img {
+  overflow: hidden;
+  width: 35px;
+  background-color: white;
+  border-radius: 19px;
+
+}
+
+.pie li  {
+  font-size: 0.8rem;
+  text-align: center;
+  float: none;
+  padding: 3px;
+}
+
+h3 {
+  text-align: center;
+  margin: 30px 0 40px 0;
+}
+
+#nredes {
+  color: white;
+  margin: 30px 0;
+}
+
+@media (min-width: 523px) {
+  section {
+    height: 79.5vh;
+  }
+}
+
+@media (min-width: 768px) {
+
+ ul.pie, .menu-contenedor {
+  width: 90%;
+}
+
+p {
+  font-size: 1rem;
+}
+
+ul.pie {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+ul.pie li {
+  display: inline-block;
+  margin-left: 60px;
+}
+
+footer {
+  height: 207px;
+}
+
+
+@media (min-width: 1024px){
+  a.iniciar, ul li.menu {
+    font-size: 1rem;
+  }
+  ul li.menu {
+    display: inherit;
+    margin-top: 17px;
+  }
+
+ ul.pie, article, .menu-contenedor{
+    width: 850px;
+  }
+
+  ul.pie li {
+    margin-left: 91px;
+}
