@@ -16,12 +16,18 @@ body {
 .transparencia{
   width: 100%;
   height: 100vh;
-  
+
   background-color: rgba(0,0,0,0.5);
 
 
 
 }
+
+.imagen_menu, #menu-check{
+
+  display: none;
+}
+
 
 header{
 
