@@ -72,11 +72,12 @@ nav {
   overflow: hidden;
   margin: 0 auto;
 }
+
 header {
   overflow: hidden;
   width: 100%;
-  height: 520px;
-  background-image: url("css/imagenes/chicaroja.jpg");
+  height: 500px;
+  background-image: url("https://i.pinimg.com/originals/af/7e/58/af7e585345e6d881bef7b42df7b44c47.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -84,14 +85,15 @@ header {
 
 h1 {
   font-family: "Roboto";
-  color: white;
+  color: orange;
   font-weight: bolder;
   font-size: 2.5rem;
   margin-top: 107px;
 }
 
 h2 {
-  color: black;
+  font-family: "Roboto";
+  color: white;
   font-size: 1.4rem;
   font-weight: lighter;
   margin-top: 50px;
