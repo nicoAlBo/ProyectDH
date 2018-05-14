@@ -13,7 +13,7 @@
   <header>
     <div class="headcont">
 
-    <a href="index.html" target="_blank"><img class="arrow" src="css/imagenes/arrow.png" alt=""></a>
+    <a href="index.php" target="_blank"><img class="arrow" src="css/imagenes/arrow.png" alt=""></a>
     <h3>Ingresar</h3>
     </div>
 
@@ -40,7 +40,7 @@
   </div>
 
   <div class="container" style="background-color: rgba(0,0,0,0.5) ">
-    <span ><a class="psw" href="contraseña.html">¿Te olvidaste la contraseña?</a></span>
+    <span ><a class="psw" href="contraseña.php">¿Te olvidaste la contraseña?</a></span>
   </div>
 </form>
 

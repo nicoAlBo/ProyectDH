@@ -21,8 +21,8 @@
           </ul>
         <div class="ladoder">
 
-          <a class="iniciar" href="login.html">Iniciar Sesión</a>
-          <a class="iniciar" href="resgistrarte.html">Registrate</a>
+          <a class="iniciar" href="login.php">Iniciar Sesión</a>
+          <a class="iniciar" href="resgistrarte.php">Registrate</a>
         </div>
         </div>
     </nav>
@@ -31,8 +31,8 @@
       <h1>Lugar donde la originalidad, creatividad e innovación confluyen </h1>
       <h2>Sumate a esta gran comunidad </h2>
       <div class="com">
-      <a class="iniciar head" href="login.html">Iniciar Sesión</a>
-      <a class="iniciar head" href="resgistrarte.html">Registrate</a>
+      <a class="iniciar head" href="login.php">Iniciar Sesión</a>
+      <a class="iniciar head" href="resgistrarte.php">Registrate</a>
     </div>
     </div>
     </header>
@@ -82,7 +82,7 @@
               <a href="#" target="_blank"><img class="imagenes" src="css/imagenes/chica.jpg" alt=""></a>
             </div>
           </article>
-          <form class="explorar" action="index.html" method="post">
+          <form class="explorar" action="index.php" method="post">
             <div class="buscador">
             <input class="busca" type="search" name="explorar" placeholder="Explorar">
             <img class="lupa" src="css/imagenes/lupa.png" alt="">
@@ -98,7 +98,7 @@
     </div>
       <ul class="pie">
         <li><a href="#">Sobre Nosotros</a></li>
-        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+        <li><a href="faq.php">Preguntas Frecuentes</a></li>
         <li><a href="#">Empleos</a></li>
         <li><a href="#">Contacto</a></li>
       </ul>

@@ -11,7 +11,7 @@
     <header>
       <div class="headcont">
 
-      <a href="index.html" target="_blank"><img class="arrow" src="css/imagenes/arrow.png" alt=""></a>
+      <a href="index.php" target="_blank"><img class="arrow" src="css/imagenes/arrow.png" alt=""></a>
       <h3>Registrate</h3>
       </div>
 
