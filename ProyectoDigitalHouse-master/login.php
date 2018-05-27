@@ -1,11 +1,11 @@
 <?php
 
-require_once ('tools.php') //incluimos las funciones programadas en otro archivo
+require_once ('tools.php'); //incluimos las funciones programadas en otro archivo
 
 /* Verifico que el usuario no este logueado en caso que si lo este
 lo dirijo a la pagina principal y corto la ejecución del codigo */
 if (verificarLogueo()){
-    header('location:index.php')
+    header('location:index.php');
     exit;
 }
 
@@ -37,7 +37,7 @@ if ($_POST){
 
 
 
-}
+
 
 
 
