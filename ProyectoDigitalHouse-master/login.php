@@ -1,3 +1,76 @@
+<?php
+
+require_once ('tools.php') //incluimos las funciones programadas en otro archivo
+
+/* Verifico que el usuario no este logueado en caso que si lo este
+lo dirijo a la pagina principal y corto la ejecución del codigo */
+if (verificarLogueo()){
+    header('location:index.php')
+    exit;
+}
+
+$username= ''; // el nombre debe ser persistente si esta bien
+
+$errores = [];
+
+if ($_POST){
+  $username = trim($_POST['uname']); //elimina los espacios del nombre de usuario recbida
+
+  $errores = validarDatosDelLogin($_POST);
+
+  if (empty($errores)) {
+			$usuario = existeEmail($username);
+			loguear($usuario);
+			// Seteo la cookie
+			if (isset($_POST["recordar"])) {
+	        setcookie('id', $usuario['id'], time() + 3600 * 24 * 30);
+	      }
+			header('location: perfil.php');
+			exit;
+		}
+	}
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -24,14 +97,27 @@
     <form class="usuario" action="">
   <div class="imgcontainer">
     <img src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt="Avatar" class="avatar">
+
   </div>
 
   <div class="container">
     <label for="uname"><b>Usuario:</b></label>
     <input type="text" placeholder="" name="uname" required>
+    <?php if (isset($errores['email'])): ?>
+								<span style="color: red;">
+									<b class="glyphicon glyphicon-exclamation-sign"></b>
+									<?=$errores['uname'];?>
+								</span>
+							<?php endif; ?>
 
     <label for="psw"><b>Contraseña:</b></label>
     <input type="password" placeholder="" name="psw" required>
+    <?php if (isset($errores['pass'])): ?>
+								<span style="color: red;">
+									<b class="glyphicon glyphicon-exclamation-sign"></b>
+									<?=$errores['pass'];?>
+								</span>
+							<?php endif; ?>
 
     <button type="submit">Cargar</button>
     <label>
