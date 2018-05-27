@@ -6,7 +6,7 @@
         <label for="act">
           <img class="perfil" src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt="">
         </label>
-        <form class="search" action="index.html" method="post">
+        <form class="search" action="" method="post">
           <input type="search" name="explorar" placeholder="Buscar"><img class="lupa" src="css/imagenes/lupa2.png" alt="">
         </form>
         <div class="barra-contenedor">
@@ -14,7 +14,12 @@
             <li><div class="perfil-container"><img class="perfil-barralat" src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt=""></div><p id="user">Nombre de Usuario</p></li>
             <li class="barra"><a href="perfil"><img src="css/imagenes/user.png" alt="">Perfil</a></li>
             <li class="barra"><a href="configuracion"><img src="css/imagenes/configuracion.png" alt="">Configuración</a></li>
-            <li class="barra"><a href="cerrar"><img  id="cerrar" src="css/imagenes/cerrar.png" alt="">Cerrar Sesión</a></li>
+            <li class="barra">
+              <form class="" action="" method="post">
+                <img  id="cerrar" src="css/imagenes/cerrar.png" alt="">
+                <input type="submit" name="cerrar" value="Cerrar Sesión">
+              </form>
+              </li>
           </ul>
         </div>
         </div>

@@ -63,6 +63,18 @@ input#act {
       margin-left: 11px;
       border: solid 2px orange;
   }
+
+  input[type=submit] {
+    background-color: #F5F5F5;
+    border: none;
+    color: black;
+    cursor: pointer;
+
+  }
+
+  input[type=submit]:hover {
+    background-color: #E0E0DA;
+  }
 .barra-contenedor {
   clear: both;
   width: 70%;

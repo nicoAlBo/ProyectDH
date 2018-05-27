@@ -14,11 +14,17 @@
       <div class="barra-aside">
         <ul>
           <div class="barraSide">
-            <img class="usuario" src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt=""></div>
+            <img class="usuario" src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt="">
+          </div>
             <p class="nombre-usuario">Nombre Usuario</p>
           <li class="barra"><a href="#"><img src="css/imagenes/user.png" alt="">Perfil</a></li>
           <li class="barra"><a href="#"><img src="css/imagenes/configuracion.png" alt="">Configuración</a></li>
-          <li class="barra"><a href="#"><img  id="cerrar" src="css/imagenes/cerrar.png" alt="">Cerrar Sesión</a></li>
+          <li class="barra">
+            <form class="" action="" method="post">
+              <img  id="cerrar" src="css/imagenes/cerrar.png" alt="">
+              <input type="submit" name="cerrar" value="Cerrar Sesión">    
+              </form>
+            </li>
         </div>
         </ul>
       </div>
