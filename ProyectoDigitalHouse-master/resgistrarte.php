@@ -1,3 +1,40 @@
+<?php
+
+	require_once('funciones.php');
+	if (estaLogueado()) {
+		header('location: perfil.php');
+		exit;
+	}
+	// Array de países para el foreach en el select
+	$paises = ['Argentina', 'Brasil', 'Colombia','Chile','Pagaguay','Uruguay'];
+	// Variables para persistencia
+	$name = '';
+	$email = '';
+	$pais = '';
+	// Array de errores vacío
+	$errores = [];
+	// Si envían algo por $_POST
+	if ($_POST) {
+		// Persisto los datos con la información que envía el usuario por $_POST
+		$name = trim($_POST['name']);
+		$email = trim($_POST['email']);
+		$pais = trim($_POST['pais']);
+		// Valido y guardo en errores
+		$errores = validar($_POST, 'avatar');
+		// Si el array de errorres está vacío, es porque no hubo errores, por lo tanto procedo con lo siguiente
+		if (empty($errores)) {
+			$errores = guardarImagen('avatar');
+			if (empty($errores)) {
+				// En la variable $usuario, guardo al usuario creado con la función crearUsuario() la cual recibe los datos de $_POST y el avatar
+				$usuario = guardarUsuario($_POST, 'avatar');
+				// Logueo al usuario y por lo tanto no es necesario el re-direct
+				loguear($usuario);
+			}
+		}
+	}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
