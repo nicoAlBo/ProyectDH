@@ -21,8 +21,8 @@
           <li class="barra"><a href="#"><img src="css/imagenes/configuracion.png" alt="">Configuración</a></li>
           <li class="barra">
             <form class="" action="" method="post">
-              <img  id="cerrar" src="css/imagenes/cerrar.png" alt="">
-              <input type="submit" name="cerrar" value="Cerrar Sesión">    
+              <img  class="cerrar" src="css/imagenes/cerrar.png" alt="">
+              <input type="submit" name="cerrar" value="Cerrar Sesión">
               </form>
             </li>
         </div>

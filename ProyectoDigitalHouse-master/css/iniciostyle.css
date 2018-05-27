@@ -158,10 +158,9 @@ li.barra img {
   margin-right: 14px;
 }
 
-img#cerrar {
-
+li.barra img.cerrar {
   top: 5px;
-  width: 18px;
+  width: 15px;
 }
 nav {
  width: 100%;
