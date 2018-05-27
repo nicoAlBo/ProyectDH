@@ -1,0 +1,537 @@
+@font-face {
+  font-family: "Lobster";
+  src: url("fonts/Lobster-Regular.woff");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: sans-serif;;
+}
+
+body {
+  background-color: #FFD598;
+}
+
+ /* HEADER */
+ .head-contenedor {
+  overflow: hidden;
+  width: 100%;
+  height: 93px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #F5F5F5;
+  z-index: 5
+ }
+header {
+  width: 100%;
+}
+
+.head {
+  overflow: hidden;
+  width: 91%;
+  margin-top: 4px;
+  margin-left: auto;
+  margin-right: auto;
+}
+h1 {
+  font-family: "Lobster";
+  color: orange;
+  font-size: 1.8rem;
+  float: right;
+}
+input#act {
+  float: left;
+  z-index: -3;
+  position: relative;
+  left: 23px;
+  top: 10px;
+  display: none;
+}
+.lupa {
+    width: 20px;
+    margin-left: 4px;
+    position: relative;
+    top: 8px;
+  }
+
+  input[type=search] {
+      width: 36%;
+      padding-left: 7px;
+      border-radius: 30px;
+      margin-left: 11px;
+      border: solid 2px orange;
+  }
+.barra-contenedor {
+  clear: both;
+  width: 70%;
+  height: 230px;
+  margin-left: 15px;
+  overflow: hidden;
+  background-color: #F5F5F5;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-bottom: solid;
+  z-index: 5;
+  position: absolute;
+}
+.id-user-amigo {
+  width: 100%;
+  padding-top: 16px;
+}
+#user-amigo {
+  border-bottom: 1px solid grey;
+  padding: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding-bottom: 10px;
+}
+#user {
+  margin-bottom: 38px;
+  border-bottom: 1px solid grey;
+  padding: 4px;
+}
+
+.perfil-container {
+  width: 21px;
+  float: left;
+  margin-right: 27px;
+}
+
+.perfil-barralat {
+  width: 100%;
+  float: left;
+  margin-left: 16px;
+  margin-right: 5px;
+}
+
+header {
+  top: 0px;
+}
+header, nav {
+  position: fixed;
+  /*z-index: -2;*/
+}
+
+#act ~ .barra-contenedor  {
+  display: none;
+  overflow: hidden;
+}
+
+#act:checked ~ .barra-contenedor {
+  display: block;
+}
+
+img.perfil {
+  width: 34px;
+  float: left;
+  margin-top: 5px;
+}
+
+li {
+  list-style: none;
+}
+
+ul.barralat {
+  margin-top: 32px;
+}
+li.barra {
+  text-align: left;
+  margin-left: 15px;
+  margin-top: 10px;
+  clear: both;
+}
+li.barra img {
+  width: 20px;
+  margin-right: 14px;
+}
+
+img#cerrar {
+
+  top: 5px;
+  width: 18px;
+}
+nav {
+ width: 100%;
+ height: 50px;
+ box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+img.nav {
+width: 23px;
+margin: 10px 18px 0 18px;
+
+}
+.nav-principal ul {
+  overflow: hidden;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.nav-principal li {
+  display: inline-block;
+}
+.nav-principal li:active {
+  background-color: #E0E0DA;
+}
+.nav-principal li:hover {
+  border-bottom: 3px solid orange;
+}
+
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/*ASIDE */
+.usuario, .barra-aside, .nombre-usuario, .barraSide, .publicar, .publica,
+.compartir, .right-container, .left-container {
+  display: none;
+}
+.left-container {
+  height: 273px;
+  overflow: hidden;
+  width: 21%;
+  margin-top: 109px;
+  overflow: hidden;
+
+}
+
+.right-container {
+  width: 100%;
+  width: 21%;
+  background-color: red;
+  height: 146px;
+  margin-top: 109px;
+  overflow: hidden;
+}
+.usuario {
+width: 34px;
+float: left;
+margin-bottom: 44px;
+margin-top: 30px;
+}
+
+.barra-aside {
+  clear: both;
+  width: 100%;
+  height: 273px;
+  overflow: hidden;
+  background-color: #F5F5F5;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  float: left;
+  padding-left: 8px;
+
+}
+.nombre-usuario {
+  float: left;
+  margin-left: 4px;
+  margin-top: 41px;
+}
+.barraSide {
+  overflow: hidden;
+  width: 34px;
+  float: left;
+  margin-left: 12px;
+}
+
+.publicar {
+  background-color: #F5F5F5;
+  width: 100%;
+  height: 146px;
+  overflow: hidden;
+  float: right;
+}
+
+.publica {
+  width: 80%;
+  padding: 16px;
+  height: 89px;
+  border-radius: 7px;
+  border: solid 2px orange;
+  margin: 10px;
+  display: block;
+}
+
+.compartir {
+  display: block;
+  width: 20px;
+  float: right;
+  margin-right: 16px;
+}
+
+/* SECTION*/
+section {
+  width: 100%;
+}
+
+.container {
+width: 99%;
+}
+
+.publi-inicio:first-child {
+    margin-top: 110px;
+}
+.coment {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  color: grey;
+  font-size: 0.8rem;
+}
+.publi-inicio {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  width: 95%;
+  height: 378px;
+  background-color: #F5F5F5;
+}
+
+/* ARTICLES */
+.publi-amigos {
+  border-top: solid 1px grey;
+  width: 100%;
+  overflow: hidden;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.img-amigos {
+  width: 100%;
+  height: 297px;
+  overflow: hidden;
+}
+
+.img-amigos img {
+  width: 100%;
+  height: auto;
+}
+
+@supports(object-fit: cover){
+    .img-amigos img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+}
+.publi-amigos img {
+  width: 18px;
+  margin: 3px 50px 0 29px;
+
+}
+
+@media (min-width: 425px){
+  .publi-inicio {
+    width: 70%;
+  }
+  .nav-principal {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  input[type=search] {
+      width: 47%;
+      padding-left: 10px;
+      font-size: 0.8rem;
+      padding: 3px;
+    }
+
+  .barra-contenedor {
+    width: 56%;
+  }
+  img.nav {
+    margin: 10px 24px 0 24px;
+  }
+
+  .publi-amigos {
+    padding-left: 9px;
+  }
+
+  .publi-amigos img {
+    margin: 3px 41px 0 30px;
+  }
+}
+
+@media (min-width: 768px) {
+.barra-contenedor {
+  width: 35%;
+}
+.head-contenedor {
+    height: 88px;
+  }
+.head {
+  margin-top: 0;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 87px;
+}
+
+.nav-principal {
+  width: 72%;
+}
+.publi-amigos {
+   padding-left: 0;
+}
+.publi-inicio {
+  width: 47%;
+}
+.publi-amigos img {
+    width: 3%;
+    margin: 3px 0 0 21px;
+}
+input[type=search] {
+  margin-left: 62px;
+}
+img.nav {
+    margin: 10px 40px 0 40px;
+}
+.img-amigos {
+     height: 350px;
+}
+.publi-inicio {
+  height: 430px;
+}
+
+@media (min-width:1024px) {
+
+  .container {
+    width: 33%;
+    margin: 0 9px;
+}
+  .usuario, .barra-aside, .nombre-usuario, .barraSide, .publicar, input[type=text],
+  .compartir, .right-container, .left-container {
+    display: block;
+  }
+  .left-container, .right-container, .container {
+    float: left;
+  }
+  .left-container {
+    margin-left: 100px;
+  }
+
+  input[type=search] {
+    margin: 0;
+    width: 262.29px;
+}
+  .head {
+    width: 90%;
+  }
+  .nav-principal {
+      width: 54%;
+    }
+
+  .img-amigos {
+    height: 321px;
+}
+.publi-inicio {
+  height: 391px;
+  width: 100%;
+  margin-bottom: 70px;
+
+}
+.search {
+  display: inline-block;
+  margin-left: 207px;
+}
+
+img.perfil {
+  display: none;
+}
+
+li.barra {
+  width: 173px;
+  clear: both;
+}
+li.barra:active {
+  background-color: #E0E0DA;
+}
+li.barra:hover {
+  background-color: #E0E0DA;
+}
+
+.barra-contenedor {
+  display: none;
+}
+}
+
+@media (min-width: 1040px) {
+  .head {
+      width: 83%;
+  }
+.nav-principal {
+    width: 77%;
+}
+.container {
+    width: 40%;
+  }
+.left-container {
+    margin-left: 100px;
+}
+.search {
+  position: relative;
+  left: 37px;
+}
+
+.publi-inicio {
+    height: 461px;
+  }
+.img-amigos {
+    height: 383px;
+}
+}
+
+@media (min-width:1364px) {
+  .search {
+  left: 117px;
+}
+}
+
+@media (min-width: 1440px) {
+  .nav-principal {
+      width: 931px;
+  }
+  .search {
+      margin-right: auto;
+      margin-left: auto;
+      left: 342px;
+    }
+
+  .main-container {
+    width: 1300px;
+    height: 100vh;
+    overflow: auto;
+    margin: 0 auto;
+  }
+
+  .head {
+    width: 960px;
+    padding: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+/*
+.left-container {
+  width: 20%;
+}
+
+.right-container {
+  width: 17%;
+}
+
+.container {
+    width: 38%;
+  }*/
+/*
+  .img-amigos {
+    height: 430px;
+  }
+
+  .publi-inicio {
+    height: 509px;
+}*/
+}
