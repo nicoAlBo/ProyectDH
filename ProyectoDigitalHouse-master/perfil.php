@@ -1,8 +1,7 @@
   <?php
 session_start();
-var_dump($_SESSION);
-var_dump($_POST);
-echo 'Bienvenido'.$_SESSION['nombre'];
+
+echo 'Bienvenido '.$_SESSION['nombre'];
 
  session_destroy();
    ?>

@@ -23,8 +23,11 @@
 		$email = trim($_POST['email']);
 
 		$errores = validar($_POST);
+
 			if (empty($errores)) {
+					guardarUsuario($_POST);
 				loguear($usuario);
+				
 		}else {
 
 		}

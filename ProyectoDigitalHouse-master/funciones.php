@@ -5,7 +5,7 @@
 		$_SESSION['id'] = $_COOKIE['id'];
 	}
 
-	function crearUsuario($data, $imagen) {
+	function crearUsuario($data) {
 		$usuario = [
 			'id' => traerUltimoID(),
 			'nombre' => $data['nombre'],
@@ -14,7 +14,6 @@
 			'email' => $data['email'],
 			'pass' => password_hash($data['pass'], PASSWORD_DEFAULT),
 
-			'foto' => 'img/' . $data['email'] . '.' . pathinfo($_FILES[$imagen]['nombre'], PATHINFO_EXTENSION)
 		];
 	   return $usuario;
 	}
@@ -111,36 +110,11 @@
 		return false;
 	}
 
-	function guardarImagen($imagen){
-		$errores = [];
-		if ($_FILES[$imagen]['error'] == UPLOAD_ERR_OK) {
 
-			$nombreArchivo = $_FILES[$imagen]['nombre'];
-
-			$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-
-			$archivoFisico = $_FILES[$imagen]['tmp_name'];
-
-			if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
-
-				$dondeEstoyParado = dirname(__FILE__);
-				$rutaFinalConNombre = $dondeEstoyParado . '/img/' . $_POST['email'] . '.' . $ext;
-
-				move_uploaded_file($archivoFisico, $rutaFinalConNombre);
-			} else {
-				$errores['imagen'] = 'El formato tiene que ser JPG, JPEG, PNG o GIF';
-			}
-		} else {
-
-			$errores['imagen'] = 'No subiste nada';
-		}
-		return $errores;
-	}
-
-	function guardarUsuario($data, $imagen){
-		$usuario = crearUsuario($data, $imagen);
+	function guardarUsuario($data){
+		$usuario = crearUsuario($data);
 		$usuarioJSON = json_encode($usuario);
-	
+
 		file_put_contents('usuarios.json', $usuarioJSON . PHP_EOL, FILE_APPEND);
 
 		return $usuario;
@@ -166,7 +140,7 @@ function validarLogin($data) {
 
 
 	function loguear($usuario) {
-
+		$_SESSION=$_POST;
 	   $_SESSION['id'] = $usuario['id'];
 		header('location: perfil.php');
 		exit;
