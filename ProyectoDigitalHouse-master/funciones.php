@@ -23,6 +23,7 @@
 		$nombre = trim($_POST['nombre']);
 		$apellido = trim($_POST['apellido']);
 		$usuario = trim($_POST['usuario']);
+		$fecha = trim($_POST['fecha']);
 		$email = trim($_POST['email']);
 		$pass = trim($_POST['pass']);
 
@@ -39,6 +40,18 @@
 		}elseif (existeUsuario($usuario)) {
 			$errores['usuario'] = "Este usuario ya existe.";
 }
+
+if ($fecha == '') {
+	$errores['fecha'] = "Completa el campo fecha";
+}else {
+	$edad= intval((strtotime("now")-strtotime($fecha))/31536000);
+	if ($edad<18) {
+		$errores['fecha'] = 'sos menor de edad';
+	}
+}
+
+
+
 
 		if ($email == '') {
 			$errores['email'] = "Completa tu email";
@@ -137,6 +150,31 @@ function validarLogin($data) {
 		}
 		return $arrayADevolver;
 	}
+
+	function guardaPerfil($imagen){
+
+	if ($_FILES[$imagen]['error'] == UPLOAD_ERR_OK) {
+
+	$nombreArchivo = $_FILES[$imagen]['nombre'];
+
+	$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+
+	$archivoFisico = $_FILES[$imagen]['tmp_name'];
+
+	if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'JPG') {
+
+	$dondeEstoyParado = dirname(__FILE__);
+
+	$rutaFinalConNombre = $dondeEstoyParado . '/img/'. $_POST['email'] . '.' . $ext;
+
+	move_uploaded_file($archivoFisico, $rutaFinalConNombre);
+
+			}
+
+		}
+
+	}
+
 
 
 	function loguear($usuario) {

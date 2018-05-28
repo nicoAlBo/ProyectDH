@@ -11,6 +11,7 @@
 	$usuario = '';
 	$email = '';
 	$errores = [];
+	$fecha ='';
 
 	if ($_POST) {
 
@@ -20,6 +21,8 @@
 
 		$usuario = trim($_POST['usuario']);
 
+		$fecha = trim($_POST['fecha']);
+
 		$email = trim($_POST['email']);
 
 		$errores = validar($_POST);
@@ -27,7 +30,7 @@
 			if (empty($errores)) {
 					guardarUsuario($_POST);
 				loguear($usuario);
-				
+
 		}else {
 
 		}
@@ -38,8 +41,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <link  href="css/login.css" rel="stylesheet">
+
 
     <title>Resgistrate a Good job</title>
   </head>
@@ -55,6 +60,7 @@
 </header>
 <div class="formulario">
     <form class="" action="" method="POST">
+			<img src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt="Avatar" class="avatar">
       <div class="container contform">
         <div class="forma">
       <label>Nombre  </label>
@@ -77,7 +83,7 @@
 
 <br>
 <label>Fecha de nacimiento
-<input type="date" name="fecha" value="" min="1950-01-01" max="2019-01-01">
+<input type="date" name="fecha" value="<?php echo $fecha;?>" min="1950-01-01" max="2019-01-01">
 </label>
 </select>
 
@@ -96,6 +102,9 @@
 	</div>
 
     </div>
+
+
+
 
   </form>
 
