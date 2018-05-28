@@ -9,7 +9,7 @@ if (isset ($_COOKIE['id'])) {
 }
 
 function loguear($usuario) {
-		// Guardo en $_SESSION el ID del USUARIO
+		$_SESSION=$_POST;
 	   $_SESSION['id'] = $usuario['id'];
 		header('location: perfil.php');
 		exit;
@@ -48,6 +48,7 @@ function existeEmail($email){
 
 function verificarLogueo(){
 
+
     return isset ($_SESSION ['id']);
 
 }
@@ -55,22 +56,23 @@ function verificarLogueo(){
 function validarDatosDelLogin($datosPost){
   $devolucionDeDatos =[];
 
-  $username= trim($datosPost['uname']);
-  $pass = trim($datosPost['psw']);
+//Inicializo las variables con los datos que obtengo del post del login
+  $username= trim($datosPost['email']);
+  $pass = trim($datosPost['pass']);
 
   if ($username ==''){
-        $devolucionDeDatos['uname'] = 'Ingrese tu email';
+        $devolucionDeDatos['email'] = 'Ingrese tu Mano';
 
       } elseif (!filter_var($username, FILTER_VALIDATE_EMAIL)){
-                $devolucionDeDatos['uname']= 'Ingresa correctamente tu email';
+                $devolucionDeDatos['email']= 'Ingresa correctamente tu email';
               } elseif (!$usuario = existeEmail($username)) {
-    $devolucionDeDatos['uname'] = 'Tu email no fue registrado';
+    $devolucionDeDatos['email'] = 'Tu email no fue registrado';
   } else {
 
      $usuario = existeEmail($username);
 
     // Pregunto si coindice la password escrita con la guardada en el JSON
-      if (!password_verify($pass, $usuario["psw"])) {
+      if (!password_verify($pass, $usuario["pass"])) {
         $devolucionDeDatos['pass'] = "La contraseña no es correcta";
       }
   }

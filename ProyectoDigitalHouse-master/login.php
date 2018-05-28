@@ -1,6 +1,6 @@
 <?php
 
-require_once ('tools.php'); //incluimos las funciones programadas en otro archivo
+require_once('tools.php'); //incluimos las funciones programadas en otro archivo
 
 /* Verifico que el usuario no este logueado en caso que si lo este
 lo dirijo a la pagina principal y corto la ejecución del codigo */
@@ -9,12 +9,16 @@ if (verificarLogueo()){
     exit;
 }
 
-$username= ''; // el nombre debe ser persistente si esta bien
+$usuario= ''; // el nombre debe ser persistente si esta bien
 
 $errores = [];
 
+
+
 if ($_POST){
-  $username = trim($_POST['uname']); //elimina los espacios del nombre de usuario recbida
+echo "hola";
+
+  $usuario = trim($_POST['email']); //elimina los espacios del nombre de usuario recbida
 
   $errores = validarDatosDelLogin($_POST);
 
@@ -101,17 +105,17 @@ if ($_POST){
   </div>
 
   <div class="container">
-    <label for="uname"><b>Usuario:</b></label>
-    <input type="text" placeholder="" name="uname" required>
+    <label><b>Usuario (Direccion de Email):</b></label>
+    <input type="text" placeholder="" name="email">
     <?php if (isset($errores['email'])): ?>
 								<span style="color: red;">
 									<b class="glyphicon glyphicon-exclamation-sign"></b>
-									<?=$errores['uname'];?>
+									<?=$errores['email'];?>
 								</span>
-							<?php endif; ?>
+						<?php endif; ?>
 
-    <label for="psw"><b>Contraseña:</b></label>
-    <input type="password" placeholder="" name="psw" required>
+    <label><b>Contraseña:</b></label>
+    <input type="password" placeholder="" name="pass" >
     <?php if (isset($errores['pass'])): ?>
 								<span style="color: red;">
 									<b class="glyphicon glyphicon-exclamation-sign"></b>
@@ -120,13 +124,14 @@ if ($_POST){
 							<?php endif; ?>
 
     <button type="submit">Cargar</button>
+
     <label>
       <input type="checkbox" checked="checked" name="remember"> Recordarme
     </label>
   </div>
 
   <div class="container" style="background-color: rgba(0,0,0,0.5) ">
-    <span ><a class="psw" href="contraseña.php">¿Te olvidaste la contraseña?</a></span>
+    <span ><a class="pass" href="contraseña.php">¿Te olvidaste la contraseña?</a></span>
   </div>
 </form>
 
