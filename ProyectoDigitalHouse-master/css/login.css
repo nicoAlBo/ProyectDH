@@ -14,6 +14,22 @@ body {
   font-size: 16px;
 }
 
+.contenedor-bienvenida {
+  background-color: rgba(0,0,0,0.8);
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+  margin: 18px auto;
+}
+p.mensaje-bienvenida{
+  font-size: 1.2rem;
+  margin: 8px;
+  float: none;
+}
+h3.registrado {
+  color: white;
+  font-size: 1.2rem;
+}
 label{
   color: orange;
   }
@@ -156,6 +172,10 @@ a.psw {
   float: left;
   padding: 0 10px 0 10px;
 }
+
+.contenedor-bienvenida {
+width: 60%;
+}
 }
 @media (min-width: 1040px){
   img.avatar {
@@ -179,6 +199,8 @@ label,
 a.psw {
   font-size: 1.2rem;
 }
-
+.contenedor-bienvenida {
+  background-color: rgba(0,0,0,0.8);
+  width: 500px;
 
 }
