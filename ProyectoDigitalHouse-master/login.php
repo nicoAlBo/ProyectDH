@@ -5,7 +5,7 @@ require_once('tools.php'); //incluimos las funciones programadas en otro archivo
 /* Verifico que el usuario no este logueado en caso que si lo este
 lo dirijo a la pagina principal y corto la ejecución del codigo */
 if (verificarLogueo()){
-    header('location:index.php');
+    header('location:perfil.php');
     exit;
 }
 
@@ -16,25 +16,45 @@ $errores = [];
 
 
 if ($_POST){
-echo "hola";
+
+
 
   $usuario = trim($_POST['email']); //elimina los espacios del nombre de usuario recbida
 
-  $errores = validarDatosDelLogin($_POST);
+ $errores = validarDatosDelLogin($_POST);
+
+
 
   if (empty($errores)) {
-			$usuario = existeEmail($username);
-			loguear($usuario);
-			// Seteo la cookie
+			$usuario = existeEmail($usuario);
+
+loguear($usuario);
 			if (isset($_POST["recordar"])) {
 	        setcookie('id', $usuario['id'], time() + 3600 * 24 * 30);
 	      }
-			header('location: perfil.php');
+      header('location:perfil.php');
+
 			exit;
 		}
 	}
+?>
 
- ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -58,7 +78,7 @@ echo "hola";
 </header>
 
 
-    <form class="usuario" action="">
+    <form class="usuario" action="" method="post">
   <div class="imgcontainer">
     <img src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt="Avatar" class="avatar">
 
@@ -66,13 +86,16 @@ echo "hola";
 
   <div class="container">
     <label><b>Usuario (Direccion de Email):</b></label>
-    <input type="text" placeholder="" name="email">
+      <input type="text" placeholder="" name="email">
     <?php if (isset($errores['email'])): ?>
+      <br>
 								<span style="color: red;">
 									<b class="glyphicon glyphicon-exclamation-sign"></b>
 									<?=$errores['email'];?>
 								</span>
 						<?php endif; ?>
+
+
 
     <label><b>Contraseña:</b></label>
     <input type="password" placeholder="" name="pass" >

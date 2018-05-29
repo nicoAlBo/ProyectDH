@@ -1,6 +1,5 @@
 <?php
-
-session_start();
+  session_start();
 
 if (isset ($_COOKIE['id'])) {
 
@@ -11,35 +10,51 @@ if (isset ($_COOKIE['id'])) {
 function loguear($usuario) {
 		$_SESSION=$_POST;
 	   $_SESSION['id'] = $usuario['id'];
-		header('location: perfil.php');
-		exit;
+
+
 	}
 
 function obtenerDatosDeUsuario() {
 
-		$usuariosJson = file_get_contents('usuarios.json');
+  $todosJson = file_get_contents('usuarios.json');
 
-		$usuariosArray = explode(PHP_EOL, $usuariosJson);
+  $usuariosLista = explode(PHP_EOL, $todosJson);
 
-		array_pop($usuariosArray);
-		// Creo un array vacio, para guardar los usuarios
-		$usuariosData = [];
-		// Recorremos el array y generamos por cada usuario un array del usuario
-		foreach ($usuariosData as $usuario) {
-			$usuariosData[] = json_decode($usuario, true);
-		}
-		return $usuariosData;
+  array_pop($usuariosLista);
+
+  $listado = [];
+  foreach ($usuariosLista as $usuarioA) {
+    $listado[] = json_decode($usuarioA, true);
+  }
+  return $listado;
 	}
+
+  function obtenerNombreDeUsuario($email) {
+
+    $todos = obtenerDatosDeUsuario();
+
+    foreach ($todos as $solo1) {
+
+      if ($solo1['email'] == $email) {
+
+        return $solo1;
+      }
+    }
+    return false;
+
+
+  	}
+
 
 
 function existeEmail($email){
-  // Traigo todos los usuarios
-  $usuariosJson = obtenerDatosDeUsuario();
-  // Recorro ese array
-  foreach ($usuariosJson as $unUsuario) {
-    // Si el mail del usuario en el array es igual al que me llegó por POST, devuelvo al usuario
-    if ($unUsuario['unname'] == $email) {
-      return $unUsuario;
+  $todos = obtenerDatosDeUsuario();
+
+  foreach ($todos as $solo1) {
+
+    if ($solo1['email'] == $email) {
+
+      return $solo1;
     }
   }
   return false;
@@ -57,22 +72,27 @@ function validarDatosDelLogin($datosPost){
   $devolucionDeDatos =[];
 
 //Inicializo las variables con los datos que obtengo del post del login
-  $username= trim($datosPost['email']);
-  $pass = trim($datosPost['pass']);
+  $usuario= trim($_POST['email']);
+  $pass = trim($_POST['pass']);
 
-  if ($username ==''){
-        $devolucionDeDatos['email'] = 'Ingrese tu Mano';
 
-      } elseif (!filter_var($username, FILTER_VALIDATE_EMAIL)){
+
+
+  if ($usuario ==''){
+        $devolucionDeDatos['email'] = 'Ingrese tu Email';
+
+      }
+elseif (!filter_var($usuario, FILTER_VALIDATE_EMAIL)){
                 $devolucionDeDatos['email']= 'Ingresa correctamente tu email';
-              } elseif (!$usuario = existeEmail($username)) {
+              } elseif (!$usuario = existeEmail($usuario)) {
+
     $devolucionDeDatos['email'] = 'Tu email no fue registrado';
   } else {
 
-     $usuario = existeEmail($username);
-
-    // Pregunto si coindice la password escrita con la guardada en el JSON
+      // Pregunto si coindice la password escrita con la guardada en el JSON
       if (!password_verify($pass, $usuario["pass"])) {
+
+
         $devolucionDeDatos['pass'] = "La contraseña no es correcta";
       }
   }

@@ -1,20 +1,23 @@
+<?php
+require_once('tools.php');
+
+$email= $_SESSION['email'];
+$nombreDeUsuario = obtenerNombreDeUsuario($email);
+$nombreDeUsuario= $nombreDeUsuario['usuario'];
+
+
+echo 'Bienvenido '.$nombreDeUsuario;
+
+session_destroy();
+ ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-      <h1>registro OK</h1>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
 
-      <?php
-    session_start();
-
-    echo 'Bienvenido '.$_SESSION['usuario'];
-
-     session_destroy();
-       ?>
-
-       ahora  <a href="login.php">logeate</a>
-  </body>
+</body>
 </html>
