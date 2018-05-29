@@ -5,6 +5,7 @@ if (isset($_COOKIE['id'])) {
 $_SESSION['id'] = $_COOKIE['id'];
 }
 
+
 function crearUsuario($data) {
 $usuario = [
 'id' => traerUltimoID(),
@@ -12,7 +13,8 @@ $usuario = [
 'apellido' => $data['apellido'],
 'usuario'=> $data['usuario'],
 'email' => $data['email'],
-'profile' => 'img/' . $email. '.' . pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION),
+//'profile' => 'img/' . $email. '.' . pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION),
+'profile' => $data['email'].'.'. pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION),
 'pass' => password_hash($data['pass'], PASSWORD_DEFAULT),
 
 ];

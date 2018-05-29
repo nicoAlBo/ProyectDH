@@ -48,20 +48,20 @@ loguear($usuario);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <link  href="css/login.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css">
 
 
     <title>Resgistrate a Good job</title>
+		
   </head>
   <body>
+<?php include('cabeza.php') ?>
 <div class="transparencia">
-    <header>
-      <div class="headcont">
 
-      <a href="index.php" target="_blank"><img class="arrow" src="css/imagenes/arrow.png" alt=""></a>
-      <h3>Registrate</h3>
-      </div>
 
-</header>
+
+
+<h3> Registrate </h3>
 <div class="formulario">
     <form class="" action="" method="POST" enctype="multipart/form-data">
       <div class="container contform">
@@ -76,7 +76,7 @@ loguear($usuario);
         <label>Usuario
   <input type="text" name="usuario" value="<?php echo $usuario;?>" >
 </label>
-</div>S
+</div>
 <div class="formb">
 
 
@@ -93,7 +93,7 @@ loguear($usuario);
   <label>Contraseña
     <input type="password" name="pass" value="">
   </label>
-S
+
 <label><p>Foto de perfil  </p></label> <br>
 <input id="regAvatar" type="file" name="avatar" value="">
 </div>

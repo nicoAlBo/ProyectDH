@@ -11,17 +11,19 @@ if (!verificarLogueo()){
 
 $email= $_SESSION['email'];
 $nombreDeUsuario = obtenerNombreDeUsuario($email);
-$nombreDeUsuario= $nombreDeUsuario['usuario'];
+$nombreDeUsuario= $nombreDeUsuario['usuario'] ;
+
+
+$email= $_SESSION['email'];
+$nombreDeProfile = obtenerNombreDeUsuario($email);
+$nombreDeProfile= 'img/'.$nombreDeProfile['profile'];
+
 
 if(isset($_POST['cerrar'])){
     session_destroy();
     header('location:index.php');
 }
-
-
-
- ?>
-
+?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -39,7 +41,7 @@ if(isset($_POST['cerrar'])){
       <div class="barra-aside">
         <ul>
           <div class="barraSide">
-            <img class="usuario" src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt="">
+            <img class="usuario" src="<?php echo $nombreDeProfile?>" alt="">
           </div>
             <p class="nombre-usuario"><?php echo $nombreDeUsuario ?></p>
           <li class="barra"><a href="#"><img src="css/imagenes/user.png" alt="">Perfil</a></li>

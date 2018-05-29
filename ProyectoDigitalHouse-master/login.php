@@ -9,7 +9,7 @@ if (verificarLogueo()){
     exit;
 }
 
-$usuario= ''; // el nombre debe ser persistente si esta bien
+$usuario= '';
 
 $errores = [];
 
@@ -45,16 +45,16 @@ loguear($usuario);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/login.css">
-    <title>Ingresar a GJ</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Ingresar a Good Job</title>
+
   </head>
   <body>
+      <?php include('cabeza.php') ?>
 <div class="transparencia">
-<header>
-
-  <header>
     <div class="headcont">
 
-    <a href="index.php" target="_blank"><img class="arrow" src="css/imagenes/arrow.png" alt=""></a>
     <h3>Ingresar</h3>
     </div>
 

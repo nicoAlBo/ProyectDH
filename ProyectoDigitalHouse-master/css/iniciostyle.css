@@ -197,7 +197,7 @@ a {
 }
 
 /*ASIDE */
-.usuario, .barra-aside, .nombre-usuario, .barraSide, .publicar, .publica,
+img.usuario, .barra-aside, .nombre-usuario, .barraSide, .publicar, .publica,
 .compartir, .right-container, .left-container {
   display: none;
 }
@@ -218,8 +218,8 @@ a {
   margin-top: 109px;
   overflow: hidden;
 }
-.usuario {
-width: 34px;
+img.usuario {
+width: 100%;
 float: left;
 margin-bottom: 44px;
 margin-top: 30px;
@@ -414,7 +414,7 @@ img.nav {
     width: 33%;
     margin: 0 9px;
 }
-  .usuario, .barra-aside, .nombre-usuario, .barraSide, .publicar, input[type=text],
+  img.usuario, .barra-aside, .nombre-usuario, .barraSide, .publicar, input[type=text],
   .compartir, .right-container, .left-container {
     display: block;
   }
