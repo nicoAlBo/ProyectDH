@@ -1,47 +1,51 @@
 <?php
 
-	require_once('funciones.php');
-	if (estaLogueado()) {
-		header('location: perfil.php');
-		exit;
-	}
+require_once('funciones.php');
+if (estaLogueado()) {
+header('location: perfil.php');
+exit;
+}
 
-	$nombre = '';
-	$apellido ='';
-	$usuario = '';
-	$email = '';
-	$errores = [];
-	$fecha ='';
+$nombre = '';
+$apellido ='';
+$usuario = '';
+$email = '';
+$errores = [];
+$fecha ='';
 
-	if ($_POST) {
 
-		$nombre = trim($_POST['nombre']);
+if ($_POST) {
 
-		$apellido = trim($_POST['apellido']);
+$nombre = trim($_POST['nombre']);
 
-		$usuario = trim($_POST['usuario']);
+$apellido = trim($_POST['apellido']);
 
-		$fecha = trim($_POST['fecha']);
+$usuario = trim($_POST['usuario']);
 
-		$email = trim($_POST['email']);
+$fecha = trim($_POST['fecha']);
 
-		$errores = validar($_POST);
+$email = trim($_POST['email']);
 
-			if (empty($errores)) {
-					guardarUsuario($_POST);
-				loguear($usuario);
 
-		}else {
 
-		}
-	}
+$errores = validar($_POST);
+
+if (empty($errores)) {
+guardaPerfil('avatar');
+guardarUsuario($_POST);
+loguear($usuario);
+
+}else {
+
+}
+}
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <link  href="css/login.css" rel="stylesheet">
 
@@ -59,21 +63,20 @@
 
 </header>
 <div class="formulario">
-    <form class="" action="" method="POST">
-			<img src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt="Avatar" class="avatar">
+    <form class="" action="" method="POST" enctype="multipart/form-data">
       <div class="container contform">
         <div class="forma">
       <label>Nombre  </label>
-  		<input type="text" name="nombre" value="<?php echo 	$nombre;?>" >
+  <input type="text" name="nombre" value="<?php echo $nombre;?>" >
 
       <label>Apellido
-        <input type="text" name="apellido" value="<?php echo 	$apellido;?>" >
+        <input type="text" name="apellido" value="<?php echo $apellido;?>" >
       </label>
 
         <label>Usuario
   <input type="text" name="usuario" value="<?php echo $usuario;?>" >
 </label>
-</div>
+</div>S
 <div class="formb">
 
 
@@ -90,16 +93,21 @@
   <label>Contraseña
     <input type="password" name="pass" value="">
   </label>
+S
+<label><p>Foto de perfil  </p></label> <br>
+<input id="regAvatar" type="file" name="avatar" value="">
 </div>
-  <button type="submit">Enviar</button>
-	<div class="container">
-	<?php
-	 foreach ($errores as $key => $value) {
-	 		echo "<span> $value </span> <br>";
-	 }
 
-	 ?>
-	</div>
+
+  <button type="submit">Enviar</button>
+<div class="container">
+<?php
+foreach ($errores as $key => $value) {
+echo "<span> $value </span> <br>";
+}
+
+?>
+</div>
 
     </div>
 
@@ -110,6 +118,6 @@
 
 </div>
 
-	</div>
+</div>
   </body>
 </html>

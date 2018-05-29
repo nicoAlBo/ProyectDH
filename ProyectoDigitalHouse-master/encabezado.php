@@ -11,7 +11,7 @@
         </form>
         <div class="barra-contenedor">
           <ul class="barralat">
-            <li><div class="perfil-container"><img class="perfil-barralat" src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt=""></div><p id="user">Nombre de Usuario</p></li>
+            <li><div class="perfil-container"><img class="perfil-barralat" src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt=""></div><p id="user"><?php echo $nombreDeUsuario ?></p></li>
             <li class="barra"><a href="perfil"><img src="css/imagenes/user.png" alt="">Perfil</a></li>
             <li class="barra"><a href="configuracion"><img src="css/imagenes/configuracion.png" alt="">Configuración</a></li>
             <li class="barra">

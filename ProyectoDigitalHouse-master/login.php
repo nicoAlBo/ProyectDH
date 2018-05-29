@@ -5,7 +5,7 @@ require_once('tools.php'); //incluimos las funciones programadas en otro archivo
 /* Verifico que el usuario no este logueado en caso que si lo este
 lo dirijo a la pagina principal y corto la ejecución del codigo */
 if (verificarLogueo()){
-    header('location:perfil.php');
+    header('Location:inicio.php');
     exit;
 }
 
@@ -32,28 +32,12 @@ loguear($usuario);
 			if (isset($_POST["recordar"])) {
 	        setcookie('id', $usuario['id'], time() + 3600 * 24 * 30);
 	      }
-      header('location:perfil.php');
+      header('Location:inicio.php');
 
 			exit;
 		}
 	}
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -86,7 +70,7 @@ loguear($usuario);
 
   <div class="container">
     <label><b>Usuario (Direccion de Email):</b></label>
-      <input type="text" placeholder="" name="email">
+      <input type="text" placeholder="" name="email" value="<?php echo $usuario;  ?>">
     <?php if (isset($errores['email'])): ?>
       <br>
 								<span style="color: red;">

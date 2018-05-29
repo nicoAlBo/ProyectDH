@@ -1,201 +1,207 @@
 <?php
-	session_start();
+session_start();
 
-	if (isset($_COOKIE['id'])) {
-		$_SESSION['id'] = $_COOKIE['id'];
-	}
+if (isset($_COOKIE['id'])) {
+$_SESSION['id'] = $_COOKIE['id'];
+}
 
-	function crearUsuario($data) {
-		$usuario = [
-			'id' => traerUltimoID(),
-			'nombre' => $data['nombre'],
-			'apellido' => $data['apellido'],
-			'usuario'=> $data['usuario'],
-			'email' => $data['email'],
-			'pass' => password_hash($data['pass'], PASSWORD_DEFAULT),
+function crearUsuario($data) {
+$usuario = [
+'id' => traerUltimoID(),
+'nombre' => $data['nombre'],
+'apellido' => $data['apellido'],
+'usuario'=> $data['usuario'],
+'email' => $data['email'],
+'profile' => 'img/' . $email. '.' . pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION),
+'pass' => password_hash($data['pass'], PASSWORD_DEFAULT),
 
-		];
-	   return $usuario;
-	}
+];
+   return $usuario;
+}
 
-	function validar($data) {
-		$errores = [];
-		$nombre = trim($_POST['nombre']);
-		$apellido = trim($_POST['apellido']);
-		$usuario = trim($_POST['usuario']);
-		$fecha = trim($_POST['fecha']);
-		$email = trim($_POST['email']);
-		$pass = trim($_POST['pass']);
+function validar($data) {
+$errores = [];
+$nombre = trim($_POST['nombre']);
+$apellido = trim($_POST['apellido']);
+$usuario = trim($_POST['usuario']);
+$fecha = trim($_POST['fecha']);
+$email = trim($_POST['email']);
+$pass = trim($_POST['pass']);
 
-		if ($nombre == '') {
-			$errores['nombre'] = "Completa el campo nombre";
-		}
-		if ($apellido == '') {
-			$errores['apellido'] = "Completa el campo Apellido";
-		}
+if ($nombre == '') {
+$errores['nombre'] = "Completa el campo nombre";
+}
+if ($apellido == '') {
+$errores['apellido'] = "Completa el campo Apellido";
+}
 
-		if ($usuario == '') {
-			$errores['usuario'] = "Completa el campo Usuario";
+if ($usuario == '') {
+$errores['usuario'] = "Completa el campo Usuario";
 
-		}elseif (existeUsuario($usuario)) {
-			$errores['usuario'] = "Este usuario ya existe.";
+}elseif (existeUsuario($usuario)) {
+$errores['usuario'] = "Este usuario ya existe.";
+}
+if ($apellido == '') {
+$errores['apellido'] = "Completa el campo Apellido";
 }
 
 if ($fecha == '') {
-	$errores['fecha'] = "Completa el campo fecha";
+$errores['fecha'] = "Completa el campo fecha";
 }else {
-	$edad= intval((strtotime("now")-strtotime($fecha))/31536000);
-	if ($edad<18) {
-		$errores['fecha'] = 'sos menor de edad';
-	}
+$edad= intval((strtotime("now")-strtotime($fecha))/31536000);
+if ($edad<18) {
+$errores['fecha'] = 'sos menor de edad';
+}
 }
 
 
 
 
-		if ($email == '') {
-			$errores['email'] = "Completa tu email";
-		} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if ($email == '') {
+$errores['email'] = "Completa tu email";
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-			$errores['email'] = "Por favor poner un email de verdad.";
-		} elseif (existeEmail($email)) {
-			$errores['email'] = "Este email ya existe.";
-		}
-		if ($pass == '') {
-			$errores['pass'] = "Por favor completa tus contraseña";
-		}
+$errores['email'] = "Por favor poner un email de verdad.";
+} elseif (existeEmail($email)) {
+$errores['email'] = "Este email ya existe.";
+}
+if ($pass == '') {
+$errores['pass'] = "Por favor completa tus contraseña";
+}
 
-		return $errores;
-	}
+return $errores;
+}
 
-	function traerTodos() {
+function guardaPerfil($imagen){
 
-		$todosJson = file_get_contents('usuarios.json');
+if ($_FILES[$imagen]['error'] == UPLOAD_ERR_OK) {
 
-		$usuariosLista = explode(PHP_EOL, $todosJson);
+$nombreArchivo = $_FILES[$imagen]['name'];
 
-		array_pop($usuariosLista);
+$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
 
-		$listado = [];
-		foreach ($usuariosLista as $usuarioA) {
-			$listado[] = json_decode($usuarioA, true);
-		}
-		return $listado;
-	}
+$archivoFisico = $_FILES[$imagen]['tmp_name'];
 
-	function traerUltimoID(){
+if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'JPG') {
 
-		$usuarios = traerTodos();
-		if (count($usuarios) == 0) {
-			return 1;
-		}
+$dondeEstoyParado = dirname(__FILE__);
 
-		$elUltimo = array_pop($usuarios);
+$rutaFinalConNombre = $dondeEstoyParado . '/img/'. $_POST['email'] . '.' . $ext;
 
-		$id = $elUltimo['id'];
+move_uploaded_file($archivoFisico, $rutaFinalConNombre);
 
-		return $id + 1;
-	}
+}
 
-	function existeEmail($email){
+}
 
-		$todos = traerTodos();
-
-		foreach ($todos as $solo1) {
-
-			if ($solo1['email'] == $email) {
-				return $solo1;
-			}
-		}
-		return false;
-	}
-
-	function existeUsuario($usuario){
-
-		$todos = traerTodos();
-
-		foreach ($todos as $solo1) {
-
-			if ($solo1['usuario'] == $usuario) {
-				return $solo1;
-			}
-		}
-		return false;
-	}
+}
 
 
-	function guardarUsuario($data){
-		$usuario = crearUsuario($data);
-		$usuarioJSON = json_encode($usuario);
 
-		file_put_contents('usuarios.json', $usuarioJSON . PHP_EOL, FILE_APPEND);
+function traerTodos() {
 
-		return $usuario;
+$todosJson = file_get_contents('usuarios.json');
+
+$usuariosLista = explode(PHP_EOL, $todosJson);
+
+array_pop($usuariosLista);
+
+$listado = [];
+foreach ($usuariosLista as $usuarioA) {
+$listado[] = json_decode($usuarioA, true);
+}
+return $listado;
+}
+
+
+function traerUltimoID(){
+
+$usuarios = traerTodos();
+if (count($usuarios) == 0) {
+return 1;
+}
+
+$elUltimo = array_pop($usuarios);
+
+$id = $elUltimo['id'];
+
+return $id + 1;
+}
+
+function existeEmail($email){
+
+$todos = traerTodos();
+
+foreach ($todos as $solo1) {
+
+if ($solo1['email'] == $email) {
+return $solo1;
+}
+}
+return false;
+}
+
+function existeUsuario($usuario){
+
+$todos = traerTodos();
+
+foreach ($todos as $solo1) {
+
+if ($solo1['usuario'] == $usuario) {
+return $solo1;
+}
+}
+return false;
+}
+
+
+function guardarUsuario($data){
+$usuario = crearUsuario($data);
+$usuarioJSON = json_encode($usuario);
+file_put_contents('usuarios.json', $usuarioJSON . PHP_EOL, FILE_APPEND);
+
+return $usuario;
 }
 function validarLogin($data) {
-		$arrayADevolver = [];
-		$email = trim($data['email']);
-		$pass = trim($data['pass']);
-		if ($email == '') {
-			$arrayADevolver['email'] = 'Completá tu email';
-		} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$arrayADevolver['email'] = 'Poné un formato de email válido';
-		} elseif (!$usuario = existeEmail($email)) {
-			$arrayADevolver['email'] = 'Este email no está registrado';
-		} else {
+$arrayADevolver = [];
+$email = trim($data['email']);
+$pass = trim($data['pass']);
+if ($email == '') {
+$arrayADevolver['email'] = 'Completá tu email';
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+$arrayADevolver['email'] = 'Poné un formato de email válido';
+} elseif (!$usuario = existeEmail($email)) {
+$arrayADevolver['email'] = 'Este email no está registrado';
+} else {
 
-      	if (!password_verify($pass, $usuario["pass"])) {
-         	$arrayADevolver['pass'] = "Credenciales incorrectas";
-      	}
-		}
-		return $arrayADevolver;
-	}
-
-	function guardaPerfil($imagen){
-
-	if ($_FILES[$imagen]['error'] == UPLOAD_ERR_OK) {
-
-	$nombreArchivo = $_FILES[$imagen]['nombre'];
-
-	$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-
-	$archivoFisico = $_FILES[$imagen]['tmp_name'];
-
-	if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'JPG') {
-
-	$dondeEstoyParado = dirname(__FILE__);
-
-	$rutaFinalConNombre = $dondeEstoyParado . '/img/'. $_POST['email'] . '.' . $ext;
-
-	move_uploaded_file($archivoFisico, $rutaFinalConNombre);
-
-			}
-
-		}
-
-	}
+      if (!password_verify($pass, $usuario["pass"])) {
+          $arrayADevolver['pass'] = "Credenciales incorrectas";
+      }
+}
+return $arrayADevolver;
+}
 
 
 
-	function loguear($usuario) {
-		$_SESSION=$_POST;
-	   $_SESSION['id'] = $usuario['id'];
-		header('location: perfil.php');
-		exit;
-	}
+function loguear($usuario) {
+$_SESSION=$_POST;
+   $_SESSION['id'] = $usuario['id'];
+header('location: perfil.php');
+exit;
+}
 
-	function estaLogueado() {
-		return isset($_SESSION['id']);
-	}
+function estaLogueado() {
+return isset($_SESSION['id']);
+}
 
-	function traerPorId($id){
-		$todos = traerTodos();
-		foreach ($todos as $usuario) {
-			if ($id == $usuario['id']) {
-				return $usuario;
-			}
-		}
-		return false;
-	}
+function traerPorId($id){
+$todos = traerTodos();
+foreach ($todos as $usuario) {
+if ($id == $usuario['id']) {
+return $usuario;
+}
+}
+return false;
+}
 
   ?>

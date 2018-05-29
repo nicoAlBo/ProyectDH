@@ -1,3 +1,28 @@
+<?php
+require_once('tools.php');
+
+
+if (!verificarLogueo()){
+    header('Location:login.php');
+    exit;
+}
+
+
+
+$email= $_SESSION['email'];
+$nombreDeUsuario = obtenerNombreDeUsuario($email);
+$nombreDeUsuario= $nombreDeUsuario['usuario'];
+
+if(isset($_POST['cerrar'])){
+    session_destroy();
+    header('location:index.php');
+}
+
+
+
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -16,7 +41,7 @@
           <div class="barraSide">
             <img class="usuario" src="https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-hacker-3830b32ad9e0802c-512x512.png" alt="">
           </div>
-            <p class="nombre-usuario">Nombre Usuario</p>
+            <p class="nombre-usuario"><?php echo $nombreDeUsuario ?></p>
           <li class="barra"><a href="#"><img src="css/imagenes/user.png" alt="">Perfil</a></li>
           <li class="barra"><a href="#"><img src="css/imagenes/configuracion.png" alt="">Configuración</a></li>
           <li class="barra">
