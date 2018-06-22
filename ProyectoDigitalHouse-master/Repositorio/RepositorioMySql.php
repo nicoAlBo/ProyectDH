@@ -1,4 +1,5 @@
 <?php
+
 namespace GoodJob\Repositorio;
 use GoodJob\Modelos\Usuario;
 use PDO;
@@ -72,7 +73,3 @@ class RepositorioMysql {
       return false;
     }
   }
-
-}
-
- ?>

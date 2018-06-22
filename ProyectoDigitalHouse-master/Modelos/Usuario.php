@@ -1,5 +1,7 @@
 <?php
+
 namespace GoodJob\Modelos;
+
 
 class Usuario {
 

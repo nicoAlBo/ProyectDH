@@ -19,18 +19,20 @@ class BaseDeDatos {
     $this->pass = $pass;
   }
 
+
   public function getUser(){
     return $this->user;
   }
 
   public function getPass(){
     return $this->pass;
-  }
+
 
   public function crear() {
     try {
-      $opt = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
+
       $baseDatos = new PDO('mysql:host=127.0.0.1', $this->getUser(), $this->getPass());
+
       $query = $baseDatos->query('CREATE DATABASE goodjob');
       $query = $baseDatos->query('USE goodjob');
       $query = $baseDatos->query('CREATE TABLE usuarios (
@@ -46,5 +48,8 @@ class BaseDeDatos {
     } catch (PDOEXCEPTION $exc) {
       echo $exc->getMessage();
     }
+
+
+    echo 'Has creado la base de datos';
   }
 }
