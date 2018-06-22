@@ -64,7 +64,7 @@ function existeEmail($email){
 function verificarLogueo(){
 
 
-    return isset ($_SESSION ['id']);
+    return isset ($_SESSION ['usuario']);
 
 }
 

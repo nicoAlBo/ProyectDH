@@ -1,4 +1,8 @@
 <?php
+include_once('autoload.php');
+use GoodJob\Modelos\Usuario;
+use GoodJob\Modelos\Validador;
+use GoodJob\Repositorio\RepositorioMySql;
 
 require_once('tools.php'); //incluimos las funciones programadas en otro archivo
 
@@ -17,18 +21,20 @@ $errores = [];
 
 if ($_POST){
 
+$validacion= new Validador($_POST);
+$errores = $validacion->validarLogin();
+$repositorio= new RepositorioMySql();
 
-
-  $usuario = trim($_POST['email']); //elimina los espacios del nombre de usuario recbida
+  $mail = trim($_POST['email']); //elimina los espacios del nombre de usuario recbida
 
  $errores = validarDatosDelLogin($_POST);
 
 
 
   if (empty($errores)) {
-			$usuario = existeEmail($usuario);
+			$usuario = $repositorio-> existeEmail($mail);
 
-loguear($usuario);
+Autentificador::loguear($usuario);
 			if (isset($_POST["recordar"])) {
 	        setcookie('id', $usuario['id'], time() + 3600 * 24 * 30);
 	      }
@@ -93,7 +99,7 @@ loguear($usuario);
     <button type="submit">Cargar</button>
 
     <label>
-      <input type="checkbox" checked="checked" name="remember"> Recordarme
+      <input type="checkbox" checked="checked" name="recordar"> Recordarme
     </label>
   </div>
 

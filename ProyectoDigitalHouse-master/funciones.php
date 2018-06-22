@@ -6,97 +6,103 @@ $_SESSION['id'] = $_COOKIE['id'];
 }
 
 
-function crearUsuario($data) {
-$usuario = [
-'id' => traerUltimoID(),
-'nombre' => $data['nombre'],
-'apellido' => $data['apellido'],
-'usuario'=> $data['usuario'],
-'email' => $data['email'],
-//'profile' => 'img/' . $email. '.' . pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION),
-'profile' => $data['email'].'.'. pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION),
-'pass' => password_hash($data['pass'], PASSWORD_DEFAULT),
+    function crearUsuario($data) {
+    $usuario = [
+    'id' => traerUltimoID(),
+    'nombre' => $data['nombre'],
+    'apellido' => $data['apellido'],
+    'usuario'=> $data['usuario'],
+    'email' => $data['email'],
+    //'profile' => 'img/' . $email. '.' . pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION),
+    'profile' => $data['email'].'.'. pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION),
+    'pass' => password_hash($data['pass'], PASSWORD_DEFAULT),
 
-];
-   return $usuario;
-}
+    ];
+       return $usuario;
+    }
 
-function validar($data) {
-$errores = [];
-$nombre = trim($_POST['nombre']);
-$apellido = trim($_POST['apellido']);
-$usuario = trim($_POST['usuario']);
-$fecha = trim($_POST['fecha']);
-$email = trim($_POST['email']);
-$pass = trim($_POST['pass']);
+    function validar($data) {
+    $errores = [];
+    $nombre = trim($_POST['nombre']);
+    $apellido = trim($_POST['apellido']);
+    $usuario = trim($_POST['usuario']);
+    $fecha = trim($_POST['fecha']);
+    $email = trim($_POST['email']);
+    $pass = trim($_POST['pass']);
 
-if ($nombre == '') {
-$errores['nombre'] = "Completa el campo nombre";
-}
-if ($apellido == '') {
-$errores['apellido'] = "Completa el campo Apellido";
-}
+    if ($nombre == '') {
+    $errores['nombre'] = "Completa el campo nombre";
+    }
+    if ($apellido == '') {
+    $errores['apellido'] = "Completa el campo Apellido";
+    }
 
-if ($usuario == '') {
-$errores['usuario'] = "Completa el campo Usuario";
+    if ($usuario == '') {
+    $errores['usuario'] = "Completa el campo Usuario";
 
-}elseif (existeUsuario($usuario)) {
-$errores['usuario'] = "Este usuario ya existe.";
-}
-if ($apellido == '') {
-$errores['apellido'] = "Completa el campo Apellido";
-}
+    }elseif (existeUsuario($usuario)) {
+    $errores['usuario'] = "Este usuario ya existe.";
+    }
+    if ($apellido == '') {
+    $errores['apellido'] = "Completa el campo Apellido";
+    }
 
-if ($fecha == '') {
-$errores['fecha'] = "Completa el campo fecha";
-}else {
-$edad= intval((strtotime("now")-strtotime($fecha))/31536000);
-if ($edad<18) {
-$errores['fecha'] = 'sos menor de edad';
-}
-}
-
-
+    if ($fecha == '') {
+    $errores['fecha'] = "Completa el campo fecha";
+    }else {
+    $edad= intval((strtotime("now")-strtotime($fecha))/31536000);
+    if ($edad<18) {
+    $errores['fecha'] = 'sos menor de edad';
+    }
+    }
 
 
-if ($email == '') {
-$errores['email'] = "Completa tu email";
-} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-$errores['email'] = "Por favor poner un email de verdad.";
-} elseif (existeEmail($email)) {
-$errores['email'] = "Este email ya existe.";
-}
-if ($pass == '') {
-$errores['pass'] = "Por favor completa tus contraseña";
-}
 
-return $errores;
-}
+    if ($email == '') {
+    $errores['email'] = "Completa tu email";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-function guardaPerfil($imagen){
+    $errores['email'] = "Por favor poner un email de verdad.";
+    } elseif (existeEmail($email)) {
+    $errores['email'] = "Este email ya existe.";
+    }
+    if ($pass == '') {
+    $errores['pass'] = "Por favor completa tus contraseña";
+    }
 
-if ($_FILES[$imagen]['error'] == UPLOAD_ERR_OK) {
+    return $errores;
+    }
 
-$nombreArchivo = $_FILES[$imagen]['name'];
+// --- Esto queda como función ----
 
-$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+  function guardaPerfil($imagen){
 
-$archivoFisico = $_FILES[$imagen]['tmp_name'];
+    if ($_FILES[$imagen]['error'] == UPLOAD_ERR_OK) {
 
-if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'JPG') {
+      $nombreArchivo = $_FILES[$imagen]['name'];
 
-$dondeEstoyParado = dirname(__FILE__);
+      $ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
 
-$rutaFinalConNombre = $dondeEstoyParado . '/img/'. $_POST['email'] . '.' . $ext;
+      $archivoFisico = $_FILES[$imagen]['tmp_name'];
 
-move_uploaded_file($archivoFisico, $rutaFinalConNombre);
+      if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'JPG') {
 
-}
+      $dondeEstoyParado = dirname(__FILE__);
 
-}
+      $rutaFinalConNombre = $dondeEstoyParado . '/img/'. $_POST['email'] . '.' . $ext;
 
-}
+      $ruta = 'img/' . $_POST['email'] . '.' . $ext;
+
+      move_uploaded_file($archivoFisico, $rutaFinalConNombre);
+      
+      return $ruta;
+
+      }
+
+    }
+
+  }
 
 
 
@@ -164,6 +170,7 @@ file_put_contents('usuarios.json', $usuarioJSON . PHP_EOL, FILE_APPEND);
 
 return $usuario;
 }
+
 function validarLogin($data) {
 $arrayADevolver = [];
 $email = trim($data['email']);

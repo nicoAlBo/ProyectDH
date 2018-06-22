@@ -1,17 +1,20 @@
 <?php
 
 require_once('funciones.php');
+require_once('autoload.php');
+use GoodJob\Modelos\Usuario;
+use GoodJob\Modelos\Autentificador;
+
+use GoodJob\Repositorio\RepositorioMysql;
 if (estaLogueado()) {
 header('location: perfil.php');
 exit;
 }
 
-$nombre = '';
-$apellido ='';
-$usuario = '';
-$email = '';
+
 $errores = [];
-$fecha ='';
+$nombre = $apellido = $usuario = $fecha = $email = $pass= '';
+
 
 
 if ($_POST) {
@@ -26,14 +29,18 @@ $fecha = trim($_POST['fecha']);
 
 $email = trim($_POST['email']);
 
+$pass= trim($_POST['pass']);
+
 
 
 $errores = validar($_POST);
 
+$usuario = new Usuario($email,$usuario,$pass,$nombre,$apellido,guardaPerfil('avatar'),$fecha);
+$repositorio= new RepositorioMysql();
+
 if (empty($errores)) {
-guardaPerfil('avatar');
-guardarUsuario($_POST);
-loguear($usuario);
+$repositorio->guardarUsuario($usuario);
+Autentificador::loguear($usuario);
 
 }else {
 
@@ -52,7 +59,7 @@ loguear($usuario);
 
 
     <title>Resgistrate a Good job</title>
-		
+
   </head>
   <body>
 <?php include('cabeza.php') ?>
@@ -81,7 +88,7 @@ loguear($usuario);
 
 
 <label>Correo Electronico
-  <input type="email" name="email" value="<?php echo $email;?>">
+  <input type="text" name="email" value="<?php echo $email;?>">
 </label>
 
 <br>
