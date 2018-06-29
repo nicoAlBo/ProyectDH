@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+<?php
+require_once('autoload.php');
+use GoodJob\Modelos\Autentificador;
+if (Autentificador::verificarLogueo()) {
+    header('Location:inicio.php');
+    exit;
+} else {
+  header('Location:login.php');
+  exit;
+}
+?>
+ <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -10,11 +21,8 @@
   <body>
     <div class="contenedor-bienvenida">
       <?php
-    session_start();
-
     echo '<p class="mensaje-bienvenida">Bienvenido '.$_SESSION['usuario'] . '</p>';
 
-     session_destroy();
        ?>
 
        <h3 class="registrado">Su usuario fue registrado</h3>

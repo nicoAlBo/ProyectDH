@@ -1,7 +1,5 @@
 <?php
-
 namespace GoodJob\Modelos;
-
 
 class Usuario {
 
@@ -26,8 +24,8 @@ class Usuario {
   }
 
   public function passwordHash($pass){
-
-    return password_hash($pass, PASSWORD_DEFAULT);
+    $passHasheado = password_hash($pass, PASSWORD_DEFAULT);
+    return $passHasheado;
   }
 
     public function setNombre($nombre) {
@@ -87,9 +85,6 @@ class Usuario {
     public function getUsuario() {
       return $this->usuario;
     }
-
-
-
 
 }
  ?>

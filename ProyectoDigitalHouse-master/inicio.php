@@ -1,27 +1,21 @@
 <?php
-require_once('tools.php');
+require_once('autoload.php');
+use GoodJob\Modelos\Autentificador;
+use GoodJob\Repositorio\RepositorioMysql;
 
-
-if (!verificarLogueo()){
+if (!Autentificador::verificarLogueo()){
     header('Location:login.php');
     exit;
 }
+$repositorio = new RepositorioMySql;
 
-
-
-$email= $_SESSION['email'];
-$nombreDeUsuario = obtenerNombreDeUsuario($email);
-$nombreDeUsuario= $nombreDeUsuario['usuario'] ;
-
-
-$email= $_SESSION['email'];
-$nombreDeProfile = obtenerNombreDeUsuario($email);
-$nombreDeProfile= 'img/'.$nombreDeProfile['profile'];
-
+$user= $_SESSION['usuario'];
+$nombreDeUsuario = $user;
+$nombreDeProfile = $repositorio->existeUsuario($user);
+$nombreDeProfile= $nombreDeProfile['foto_perfil'];
 
 if(isset($_POST['cerrar'])){
-    session_destroy();
-    header('location:index.php');
+    Autentificador::desloguear();
 }
 ?>
 

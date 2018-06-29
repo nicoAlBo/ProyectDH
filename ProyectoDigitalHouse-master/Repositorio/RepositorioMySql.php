@@ -1,5 +1,4 @@
 <?php
-
 namespace GoodJob\Repositorio;
 use GoodJob\Modelos\Usuario;
 use PDO;
@@ -15,7 +14,6 @@ class RepositorioMysql {
   public function __construct() {
     $this->conex = new PDO($this->host, $this->dbuser,  $this->dbpass,
       [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-
   }
 
   public function guardarUsuario(Usuario $usuario) {
@@ -27,7 +25,7 @@ class RepositorioMysql {
     $stmt->bindValue(':email', $usuario->getEmail());
     $stmt->bindValue(':pass', $usuario->passwordHash($usuario->getPass()));
     $stmt->bindValue(':nacimiento', $usuario->getNacimiento());
-    $stmt->bindValue(':foto_perfil', $usuario->getAvatar());
+    $stmt->bindValue(':foto_perfil', $usuario->getAvatar()??"img/avatar.png" );
     $stmt->execute();
   }
 
@@ -44,8 +42,6 @@ class RepositorioMysql {
     $results = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($results) {
       return $results;
-    } else {
-      return false;
     }
   }
 
@@ -56,8 +52,6 @@ class RepositorioMysql {
     $results = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($results) {
       return $results;
-    } else {
-      return false;
     }
 
   }
@@ -69,7 +63,9 @@ class RepositorioMysql {
     $results = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($results) {
       return $results;
-    } else {
-      return false;
     }
   }
+
+}
+
+ ?>

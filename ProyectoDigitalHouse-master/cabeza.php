@@ -1,6 +1,6 @@
 <nav class="menu-principal">
   <div class="menu-contenedor">
-  <a href="#" class="nombre">GJ</a>
+  <a href="index.php" class="nombre">Good Job</a>
   <input id="act" type="checkbox" name="act" value="">
   <label for="act">
   <img class=" hamburguesa" src="css/imagenes/menu.png" alt="">

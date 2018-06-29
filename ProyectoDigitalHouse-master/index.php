@@ -1,3 +1,10 @@
+<?php
+require_once('autoload.php');
+use GoodJob\Modelos\Autentificador;
+if (Autentificador::verificarLogueo()) {
+    header('Location:inicio.php');
+    exit;
+} ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
